@@ -1,0 +1,39 @@
+.pill {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: rgba(8, 12, 28, 0.70);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+.dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.18);
+    transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.dot:hover {
+    background: rgba(255, 255, 255, 0.38);
+    transform: scale(1.25);
+}
+
+/* Active dot — cyan glow */
+.dot.active {
+    background: #22D3EE;
+    box-shadow: 0 0 8px rgba(34, 211, 238, 0.7), 0 0 16px rgba(34, 211, 238, 0.3);
+    transform: scale(1.15);
+}

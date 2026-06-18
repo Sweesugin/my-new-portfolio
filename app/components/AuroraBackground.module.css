@@ -1,0 +1,177 @@
+.wrap {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+    background: linear-gradient(180deg, #03050E 0%, #060A18 40%, #070B1A 70%, #04060F 100%);
+}
+
+/* ── Deep corner depth ── */
+.base {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 90% 50% at 50% 0%,   rgba(10, 20, 55, 0.8) 0%, transparent 70%),
+        radial-gradient(ellipse 70% 40% at 50% 100%, rgba(5, 10, 35, 0.9) 0%, transparent 60%);
+}
+
+/* ── Aurora band 1 — cyan, sweeps left→right ── */
+.band1 {
+    position: absolute;
+    left: -20%;
+    right: -20%;
+    top: 18%;
+    height: 28vh;
+    background: radial-gradient(
+        ellipse 100% 100% at 50% 50%,
+        rgba(34, 211, 238, 0.11) 0%,
+        rgba(14, 165, 233, 0.06) 40%,
+        transparent 70%
+    );
+    filter: blur(55px);
+    border-radius: 50%;
+    animation: auroraDrift1 18s ease-in-out infinite;
+    will-change: transform, opacity;
+}
+
+/* ── Aurora band 2 — indigo, sweeps right→left, offset ── */
+.band2 {
+    position: absolute;
+    left: -20%;
+    right: -20%;
+    top: 35%;
+    height: 32vh;
+    background: radial-gradient(
+        ellipse 100% 100% at 50% 50%,
+        rgba(99, 102, 241, 0.10) 0%,
+        rgba(79, 70, 229, 0.05) 40%,
+        transparent 70%
+    );
+    filter: blur(65px);
+    border-radius: 50%;
+    animation: auroraDrift2 24s ease-in-out infinite;
+    will-change: transform, opacity;
+}
+
+/* ── Aurora band 3 — violet, slow center pulse ── */
+.band3 {
+    position: absolute;
+    left: -10%;
+    right: -10%;
+    top: 50%;
+    height: 26vh;
+    background: radial-gradient(
+        ellipse 100% 100% at 50% 50%,
+        rgba(124, 58, 237, 0.09) 0%,
+        rgba(109, 40, 217, 0.04) 40%,
+        transparent 70%
+    );
+    filter: blur(70px);
+    border-radius: 50%;
+    animation: auroraDrift3 30s ease-in-out infinite;
+    will-change: transform, opacity;
+}
+
+/* ── Aurora band 4 — deep teal, bottom anchor ── */
+.band4 {
+    position: absolute;
+    left: -20%;
+    right: -20%;
+    bottom: 10%;
+    height: 24vh;
+    background: radial-gradient(
+        ellipse 100% 100% at 50% 50%,
+        rgba(20, 184, 166, 0.07) 0%,
+        rgba(6, 148, 162, 0.04) 40%,
+        transparent 70%
+    );
+    filter: blur(60px);
+    border-radius: 50%;
+    animation: auroraDrift4 22s ease-in-out infinite;
+    will-change: transform, opacity;
+}
+
+/* ── Shimmer overlay — thin horizontal light streak ── */
+.shimmer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 38%;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(34, 211, 238, 0.08) 15%,
+        rgba(99, 102, 241, 0.14) 40%,
+        rgba(124, 58, 237, 0.12) 60%,
+        rgba(34, 211, 238, 0.08) 85%,
+        transparent 100%
+    );
+    filter: blur(3px);
+    animation: shimmerPulse 10s ease-in-out infinite;
+    z-index: 1;
+}
+
+/* ── Vignette ── */
+.vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        ellipse 120% 110% at 50% 50%,
+        transparent 25%,
+        rgba(3, 5, 14, 0.35) 65%,
+        rgba(3, 5, 14, 0.75) 100%
+    );
+    z-index: 2;
+}
+
+/* ── Noise grain ── */
+.noise {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    opacity: 0.028;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+}
+
+/* ── Keyframes ── */
+@keyframes auroraDrift1 {
+    0%   { transform: translateX(0)   scaleY(1);    opacity: 0.8; }
+    30%  { transform: translateX(8%)  scaleY(1.15); opacity: 1;   }
+    65%  { transform: translateX(-6%) scaleY(0.9);  opacity: 0.7; }
+    100% { transform: translateX(0)   scaleY(1);    opacity: 0.8; }
+}
+
+@keyframes auroraDrift2 {
+    0%   { transform: translateX(0)    scaleY(1);    opacity: 0.7; }
+    40%  { transform: translateX(-10%) scaleY(1.12); opacity: 1;   }
+    70%  { transform: translateX(7%)   scaleY(0.88); opacity: 0.6; }
+    100% { transform: translateX(0)    scaleY(1);    opacity: 0.7; }
+}
+
+@keyframes auroraDrift3 {
+    0%   { transform: translateX(0)   scaleY(1);    opacity: 0.6; }
+    35%  { transform: translateX(5%)  scaleY(1.18); opacity: 0.9; }
+    70%  { transform: translateX(-4%) scaleY(0.85); opacity: 0.5; }
+    100% { transform: translateX(0)   scaleY(1);    opacity: 0.6; }
+}
+
+@keyframes auroraDrift4 {
+    0%   { transform: translateX(0)    scaleY(1);    opacity: 0.5; }
+    45%  { transform: translateX(-7%)  scaleY(1.10); opacity: 0.8; }
+    75%  { transform: translateX(5%)   scaleY(0.92); opacity: 0.4; }
+    100% { transform: translateX(0)    scaleY(1);    opacity: 0.5; }
+}
+
+@keyframes shimmerPulse {
+    0%, 100% { opacity: 0.4; transform: scaleX(0.95); }
+    50%       { opacity: 1;   transform: scaleX(1.02); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .band1, .band2, .band3, .band4, .shimmer { animation: none; }
+}

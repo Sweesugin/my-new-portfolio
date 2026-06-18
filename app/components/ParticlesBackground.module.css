@@ -1,0 +1,22 @@
+/* ── Dark charcoal/black background — shown by default, hidden in light mode ── */
+.wrap {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+    background: radial-gradient(ellipse 140% 80% at 50% -10%, #0c0d12 0%, #040508 75%);
+    display: block;
+    width: 100vw;
+    height: 100vh;
+}
+
+.canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+:global([data-theme='light']) .wrap {
+    display: none;
+}

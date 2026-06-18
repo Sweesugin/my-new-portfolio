@@ -1,0 +1,141 @@
+.section {
+    padding: 80px 0;
+    width: 100%;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.heading {
+    text-align: center;
+    color: var(--text-primary);
+    font-size: var(--fs-h1);
+    font-weight: 800;
+    margin-bottom: 3rem;
+}
+
+.grid {
+    display: grid;
+    gap: 30px;
+    /* Desktop: 3 columns, Tablet: 2 columns, Mobile: 1 column */
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card {
+    border-radius: 14px;
+    overflow: hidden;
+    transition: var(--transition);
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.banner {
+    height: 180px;
+    /* Approximately 55% of common card height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition);
+    z-index: 2;
+}
+
+.card:hover .overlay {
+    opacity: 1;
+}
+
+.overlayText {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+    max-width: 90px;
+    max-height: 60px;
+    object-fit: contain;
+    object-position: center;
+    filter: brightness(0) invert(1);
+    display: block;
+    flex: 0 0 auto;
+}
+
+.initialsLogo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.05em;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    flex: 0 0 auto;
+}
+
+.content {
+    height: 152px;
+    padding: 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.title {
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    min-height: 3.4em;
+}
+
+.issuer {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: block;
+}
